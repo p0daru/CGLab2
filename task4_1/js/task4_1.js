@@ -51,19 +51,19 @@ const pyramid = new THREE.Mesh(geometry, material);
 // Adding the pyramid to the scene
 scene.add(pyramid);
 
-const wireframeMaterial = new THREE.MeshBasicMaterial({ color: 0xFFC900, wireframe: true, opacity: 0.2, transparent: true });
+const wireframeMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, opacity: 0.01, transparent: true });
 const wireframe = new THREE.Mesh(geometry, wireframeMaterial);
 scene.add(wireframe);
 
 // Creating edges for the pyramid
-const edges = new THREE.EdgesGeometry(geometry);
-const lineMaterial = new THREE.LineBasicMaterial({ color: 0xb2a5d3, linewidth: 3 });
-const lines = new THREE.LineSegments(edges, lineMaterial);
-scene.add(lines);
+// const edges = new THREE.EdgesGeometry(geometry);
+// const lineMaterial = new THREE.LineBasicMaterial({ color: 0xb2a5d3, linewidth: 3 });
+// const lines = new THREE.LineSegments(edges, lineMaterial);
+// scene.add(lines);
 
 // Creating points for the edges
 const pointsMaterial = new THREE.PointsMaterial({ color: 0xFFC900, size: 0.2 });
-const points = new THREE.Points(edges, pointsMaterial);
+const points = new THREE.Points(geometry, pointsMaterial);
 scene.add(points);
 
 // Setting the initial camera position
@@ -76,6 +76,12 @@ function animate3DScene() {
 
   pyramid.rotation.x += 0.015;
   pyramid.rotation.y += 0.01;
+
+  points.rotation.x += 0.015;
+  points.rotation.y += 0.01;
+
+  wireframe.rotation.x += 0.015;
+  wireframe.rotation.y += 0.01;
 
   // Rendering the scene with the camera
   renderer.render(scene, camera);
