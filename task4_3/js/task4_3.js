@@ -56,19 +56,15 @@ const pyramid2 = new THREE.Mesh(geometry2, material2);
 // Adding the pyramid to the scene
 scene.add(pyramid2);
 
-const wireframeMaterial2 = new THREE.MeshBasicMaterial({ color: 0x000000, wireframe: true, opacity: 0.2, transparent: true });
+const wireframeMaterial2 = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true, opacity: 0.1, transparent: true });
 const wireframe2 = new THREE.Mesh(geometry2, wireframeMaterial2);
 scene.add(wireframe2);
 
-// Creating edges for the pyramid
-const edges = new THREE.EdgesGeometry(geometry2);
-const lineMaterial = new THREE.LineBasicMaterial({ color: 0x000000, linewidth: 3 });
-const lines = new THREE.LineSegments(edges, lineMaterial);
-scene.add(lines);
+
 
 // Creating points for the edges
 const pointsMaterial = new THREE.PointsMaterial({ color: 0xFFC900, size: 0.2 });
-const points = new THREE.Points(edges, pointsMaterial);
+const points = new THREE.Points(geometry, pointsMaterial);
 scene.add(points);
 
 
@@ -94,11 +90,17 @@ function animate3DScene() {
   requestAnimationFrame(animate3DScene);
 
   // Rotating the cube
-  pyramid.rotation.x += 0.015;
-  pyramid.rotation.y += 0.01;
+  pyramid.rotation.x += 0.02;
+  pyramid.rotation.y += 0.02;
 
-  pyramid2.rotation.x += 0.015;
-  pyramid2.rotation.y += 0.01;
+  pyramid2.rotation.x += 0.02;
+  pyramid2.rotation.y += 0.02;
+
+  points.rotation.x += 0.015;
+  points.rotation.y += 0.01;
+
+  wireframe2.rotation.x += 0.015;
+  wireframe2.rotation.y += 0.01;
 
   // Rendering the scene with the camera
   renderer.render(scene, camera);
