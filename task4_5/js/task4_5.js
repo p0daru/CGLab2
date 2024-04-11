@@ -38,13 +38,13 @@ const geometry = new THREE.CylinderGeometry(
 );
 
 // Solid model
-// const solidMaterial = [
-//   new THREE.MeshBasicMaterial({ color: 0xFC4026 }), // sides-Green
-//   new THREE.MeshBasicMaterial({ color: 0x26FCC8 }), // top-Purple
-//   new THREE.MeshBasicMaterial({ color: 0x26FCC8 }) //  bottom-Purple
-// ];
-// const solidPyramid = new THREE.Mesh(cylinderGeometry, solidMaterial);
-// scene.add(solidPyramid);
+const solidMaterial = [
+  new THREE.MeshBasicMaterial({ color: 0xFC4026 }), // sides-Green
+  new THREE.MeshBasicMaterial({ color: 0x26FCC8 }), // top-Purple
+  new THREE.MeshBasicMaterial({ color: 0x26FCC8 }) //  bottom-Purple
+];
+const solidPyramid = new THREE.Mesh(cylinderGeometry, solidMaterial);
+scene.add(solidPyramid);
 
 // Adding outlined edges
 const wireframeMaterial = new THREE.LineBasicMaterial({ color: 0xb2a5d3, linewidth: 2});
